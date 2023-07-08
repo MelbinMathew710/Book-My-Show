@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "SHOWS")
@@ -32,4 +34,10 @@ public class Show {
     @ManyToOne
     @JoinColumn
     private Theater theater;
+
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
+    private List<ShowSeat> showSeatList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "show", cascade = CascadeType.ALL)
+    private List<Ticket> ticketList = new ArrayList<>();
 }

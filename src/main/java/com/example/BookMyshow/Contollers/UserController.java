@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @PostMapping("/addNew")
     public ResponseEntity<String> addNewUser(@RequestBody UserEntryDto userEntryDto) {
@@ -26,4 +26,5 @@ public class UserController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
+
 }
